@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>What is a Good Sport? — WSC Sports</title>
+<style>
+  :root{--bg:#0e0e1c;--c1:#151528;--c2:#1b1b38;--c3:#0d1a3a;--bd:#272750;--tx:#d0d0e4;--dm:#7878a0;--ac:#4fc3f7;--g:#4caf50;--g2:#81c784;--y:#ffc107;--o:#ff9800;--r:#f44336;--p:#ab47bc;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--tx);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.5;}
+  a{color:var(--ac);text-decoration:none;}
+  ::selection{background:var(--ac);color:#000;}
+
+  header{background:var(--c1);border-bottom:2px solid var(--ac);padding:20px 32px;display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap;}
+  header h1{font-size:1.35rem;font-weight:800;color:#fff;letter-spacing:-.3px;}
+  header .sub{color:var(--dm);font-size:.82rem;}
+  .tabs{margin-left:auto;display:flex;gap:3px;}
+  .tb{background:var(--c3);color:var(--dm);border:1px solid var(--bd);border-radius:6px;padding:6px 16px;font-size:.78rem;cursor:pointer;font-weight:600;transition:.15s;}
+  .tb:hover{background:#1a2e5a;} .tb.on{background:var(--ac);color:#000;border-color:var(--ac);}
+  .pn{display:none;}.pn.on{display:block;}
+  section{padding:28px 32px;}
+  .h2{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px;}
+  .h3{font-size:.92rem;font-weight:700;color:#fff;margin:20px 0 6px;}
+  .cap{color:var(--dm);font-size:.8rem;margin-bottom:18px;}
+
+  .note{background:var(--c3);border-left:3px solid var(--ac);border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:18px;}
+  .note b{color:var(--ac);font-size:.7rem;text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:3px;}
+  .note p{font-size:.8rem;line-height:1.55;}
+
+  table{width:100%;border-collapse:separate;border-spacing:0;}
+  th{background:var(--c3);color:var(--dm);font-size:.68rem;text-transform:uppercase;letter-spacing:.4px;padding:9px 10px;text-align:left;border-bottom:2px solid var(--bd);position:sticky;top:0;z-index:2;white-space:nowrap;}
+  td{padding:8px 10px;border-bottom:1px solid var(--bd);font-size:.8rem;}
+  tr:hover td{background:rgba(79,195,247,.03);}
+  .tc{text-align:center;}
+  .sn{font-weight:700;color:#fff;white-space:nowrap;}
+
+  .pill{display:inline-block;min-width:28px;padding:2px 6px;border-radius:4px;font-size:.72rem;font-weight:700;text-align:center;}
+  .s10,.s9{background:#1b5e20;color:#a5d6a7;}
+  .s8,.s7{background:#33691e;color:#c5e1a5;}
+  .s6,.s5{background:#f57f17;color:#fff9c4;}
+  .s4,.s3{background:#e65100;color:#ffe0b2;}
+  .s2,.s1{background:#b71c1c;color:#ffcdd2;}
+  .s0{background:var(--bd);color:var(--dm);}
+  .cg{background:#1b5e20;color:#a5d6a7;padding:3px 10px;border-radius:4px;font-weight:800;font-size:.82rem;}
+  .cy{background:#f57f17;color:#fff9c4;padding:3px 10px;border-radius:4px;font-weight:800;font-size:.82rem;}
+  .cr{background:#b71c1c;color:#ffcdd2;padding:3px 10px;border-radius:4px;font-weight:800;font-size:.82rem;}
+  .cn{background:var(--bd);color:var(--dm);padding:3px 10px;border-radius:4px;font-weight:800;font-size:.82rem;}
+
+  .bar{height:7px;border-radius:4px;min-width:3px;display:inline-block;vertical-align:middle;}
+  .prov{font-size:.7rem;color:var(--dm);max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .tag{display:inline-block;background:var(--c3);color:var(--ac);font-size:.66rem;padding:1px 6px;border-radius:3px;margin:1px;}
+
+  .qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin-bottom:18px;}
+  .qc{background:var(--c1);border:1px solid var(--bd);border-radius:8px;padding:18px;position:relative;}
+  .qc h4{font-size:.85rem;font-weight:700;color:#fff;margin-bottom:4px;}
+  .qc .who{font-size:.68rem;color:var(--ac);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px;}
+  .qc p,.qc ul{font-size:.78rem;color:var(--dm);line-height:1.6;}
+  .qc ul{padding-left:14px;}
+  .qc .scale{margin-top:10px;display:grid;grid-template-columns:40px 1fr;gap:2px 8px;font-size:.72rem;}
+  .qc .scale .sv{font-weight:700;text-align:center;border-radius:3px;padding:1px 0;}
+
+  .edit-cell{background:transparent;border:1px solid var(--bd);color:var(--tx);width:42px;padding:2px;border-radius:3px;font-size:.75rem;text-align:center;font-weight:700;}
+  .edit-cell:focus{border-color:var(--ac);outline:none;background:var(--c3);}
+  .legend{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+  .legend span{font-size:.72rem;display:flex;align-items:center;gap:3px;color:var(--dm);}
+
+  .src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;}
+  .src{background:var(--c1);border:1px solid var(--bd);border-radius:7px;padding:12px 16px;font-size:.8rem;}
+  .src .t{font-weight:600;color:#fff;}
+  .src .d{font-size:.72rem;color:var(--dm);}
+
+  /* Info button */
+  .info-btn{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--ac);color:#000;font-size:.65rem;font-weight:900;cursor:pointer;margin-left:5px;vertical-align:middle;line-height:1;font-style:normal;font-family:'Segoe UI',system-ui,sans-serif;border:none;flex-shrink:0;transition:.15s;user-select:none;}
+  .info-btn:hover{background:#fff;transform:scale(1.15);}
+
+  /* Floating tooltip — rendered in <body>, positioned via JS */
+  #tooltip-box{display:none;position:fixed;background:#12123a;border:2px solid var(--ac);border-radius:10px;padding:14px 16px;font-size:.78rem;font-weight:400;font-style:normal;font-family:'Segoe UI',system-ui,sans-serif;color:var(--tx);width:340px;max-width:92vw;z-index:9999;text-transform:none;letter-spacing:0;line-height:1.65;white-space:normal;text-align:left;box-shadow:0 12px 40px rgba(0,0,0,.85);pointer-events:none;}
+  #tooltip-box.visible{display:block;}
+  #tooltip-box .tip-title{color:var(--ac);font-weight:700;font-size:.82rem;margin-bottom:8px;display:block;border-bottom:1px solid var(--bd);padding-bottom:6px;}
+  #tooltip-box .tip-ex{background:rgba(255,255,255,.05);border-radius:5px;padding:8px 10px;margin-top:10px;font-size:.73rem;color:var(--g2);line-height:1.6;}
+  #tooltip-box .tip-link{display:inline-block;margin-top:8px;color:var(--ac);font-size:.72rem;text-decoration:underline;}
+  #tooltip-box::after{content:'▼';position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);color:var(--ac);font-size:.65rem;line-height:1;}
+
+  @media(max-width:900px){section{padding:16px;}header{padding:14px 16px;}.tabs{margin-left:0;margin-top:8px;}#tooltip-box{width:90vw;}}
+  @media print{body{background:#fff;color:#222;}th{background:#eee;color:#444;}.pill{border:1px solid #ccc;}header{border-bottom:2px solid #333;}.info-btn{display:none;}}
+</style>
+</head>
+<body>
+<!-- Floating tooltip -->
+<div id="tooltip-box"></div>
+
+<header>
+  <div>
+    <h1>What is a Good Sport?</h1>
+    <div class="sub">Sport Health Scoring Framework &middot; WSC Sports &middot; Data as of March 17 2026</div>
+  </div>
+  <div class="tabs">
+    <div class="tb on" data-t="score">Scorecard</div>
+    <div class="tb" data-t="scale">Quality Scale</div>
+    <div class="tb" data-t="detail">Data Breakdown</div>
+    <div class="tb" data-t="src">Sources</div>
+  </div>
+</header>
+
+<!-- ========== SCORECARD ========== -->
+<div id="p-score" class="pn on">
+<section>
+  <div class="h2">Sport Health Scorecard — All Sports</div>
+  <div class="cap">Composite score (0–10) across 6 dimensions. All columns are auto-scored from live data (MSSQL · Snowflake · Jira).</div>
+
+  <div class="note" style="margin-bottom:14px;">
+    <b>How to use</b>
+    <p>All 6 dimensions are auto-scored from real data (MSSQL + Snowflake + Jira). Hover the <span class="info-btn" style="cursor:default;pointer-events:none;vertical-align:middle">i</span> icon on any column header to see what it measures, the data source, scoring thresholds, and why each sport got its score.</p>
+  </div>
+
+  <div class="legend">
+    <span><span class="pill s10">9-10</span> Excellent</span>
+    <span><span class="pill s7">7-8</span> Good</span>
+    <span><span class="pill s5">5-6</span> OK</span>
+    <span><span class="pill s3">3-4</span> Weak</span>
+    <span><span class="pill s1">1-2</span> Poor</span>
+    <span><span class="pill s0">–</span> No data</span>
+  </div>
+
+  <div style="overflow-x:auto">
+  <table id="mainTbl">
+    <thead><tr>
+      <th>#</th>
+      <th>Sport</th>
+      <th class="tc">Content<br>Quality<br><span style="color:var(--ac);font-weight:400">30%</span>
+        <button class="info-btn" data-tip="cq">i</button>
+      </th>
+      <th class="tc">Data<br>Provider<br><span style="color:var(--ac);font-weight:400">20%</span>
+        <button class="info-btn" data-tip="dp">i</button>
+      </th>
+      <th class="tc">Bug<br>Density<br><span style="color:var(--ac);font-weight:400">15%</span>
+        <button class="info-btn" data-tip="bg">i</button>
+      </th>
+      <th class="tc">Scale<br><span style="color:var(--ac);font-weight:400">10%</span>
+        <button class="info-btn" data-tip="sc">i</button>
+      </th>
+      <th class="tc">Storylines<br><span style="color:var(--g2);font-weight:400">15%</span>
+        <button class="info-btn" data-tip="sl">i</button>
+      </th>
+      <th class="tc">Stories<br><span style="color:var(--g2);font-weight:400">10%</span>
+        <button class="info-btn" data-tip="st">i</button>
+      </th>
+      <th class="tc" style="min-width:85px">Composite
+        <button class="info-btn" data-tip="comp">i</button>
+      </th>
+      <th>Missing %
+        <button class="info-btn" data-tip="miss">i</button>
+      </th>
+      <th>Providers</th>
+    </tr></thead>
+    <tbody id="mainBody"></tbody>
+  </table>
+  </div>
+
+</section>
+</div>
+
+<!-- ========== QUALITY SCALE ========== -->
+<div id="p-scale" class="pn">
+<section>
+  <div class="h2">The Quality Scale: What Does 1–10 Mean?</div>
+  <div class="cap">Synthesized from conversations with Product (Yoav Yahav, Ron Tahan, Dan Dragucki, Yuval Ben Nissan) and Dev (Shahar Cohen, Tal Kalderon, Daniel Hutzler) on March 16, 2026.</div>
+
+  <div class="note">
+    <b>The North Star</b>
+    <p><strong>Yoav Yahav:</strong> "The first thing is to make sure your highlights are good. Everything else is secondary."<br>
+    <strong>Ron Tahan:</strong> "When I say a sport is good, it's composed of several things" — highlights quality is the first thing he checks.<br>
+    <strong>Shahar Cohen:</strong> "Even at our level this is very subjective — there's no single definition." But converged on bugs, manual work, client type, and content quality.</p>
+  </div>
+
+  <div class="qgrid">
+    <div class="qc" style="border-left:3px solid var(--ac)">
+      <h4>1. Content Quality (30%)</h4>
+      <div class="who">Ron #1 &middot; Yoav #1 &middot; Shahar #4</div>
+      <p>How good are the auto-generated highlights? Are critical events missing? Is the event order correct?</p>
+      <p style="margin-top:6px;font-size:.72rem;color:var(--ac)">Data: Snowflake MISSING_CRITICAL_ALL_SPORTS_VU_LIST (Kesem Cohen's pipeline)</p>
+      <div class="scale">
+        <span class="sv s10">10</span><span>Perfect — &lt;0.2% missing events. Highlights feel complete and polished.</span>
+        <span class="sv s9">9</span><span>Excellent — 0.2–0.5%. Rare misses, only edge cases.</span>
+        <span class="sv s7">8</span><span>Strong — 0.5–1%. Occasional miss, quickly caught by ops.</span>
+        <span class="sv s7">7</span><span>Good — 1–2%. Manageable issues. Client rarely notices.</span>
+        <span class="sv s5">6</span><span>OK — 2–4%. Noticeable gaps. Ops fixes most before client sees.</span>
+        <span class="sv s5">5</span><span>Mediocre — 4–8%. Regular misses. Some reach the client.</span>
+        <span class="sv s3">3</span><span>Weak — 8–15%. Frequent issues. Client likely complains.</span>
+        <span class="sv s1">2</span><span>Poor — 15–30%. Major gaps. Content often broken.</span>
+        <span class="sv s1">1</span><span>Broken — 30%+. More broken than working.</span>
+      </div>
+    </div>
+
+    <div class="qc" style="border-left:3px solid var(--g)">
+      <h4>2. Data Provider (20%)</h4>
+      <div class="who">Ron #2 &middot; Yoav &middot; Shahar</div>
+      <p>How reliable is the data feed? Premium providers (Opta, Sportradar) = rich, fast, accurate. Lower tiers = gaps, delays, manual work.</p>
+      <p style="margin-top:6px;font-size:.72rem;color:var(--ac)">Data: Snowflake MRR_INGESTIONMANAGERTODATAPROVIDER + industry reputation</p>
+      <div class="scale">
+        <span class="sv s10">10</span><span>Tier 1 — Opta, Sportradar, ProTennis, OBS. Gold standard. Multiple T1 available.</span>
+        <span class="sv s7">7</span><span>Tier 2 — Statscore, NRL, Genius/FIBA, league-official data. Solid but narrower.</span>
+        <span class="sv s5">4</span><span>Tier 3 — DSG, Enetpulse, Kayo, regional providers. Adequate, limited params.</span>
+        <span class="sv s1">2</span><span>Tier 4 — Manual only, no automated data. Yoav: "Only with good data like the Olympics."</span>
+      </div>
+    </div>
+
+    <div class="qc" style="border-left:3px solid var(--y)">
+      <h4>3. Bug Density (15%)</h4>
+      <div class="who">Ron #3 &middot; Shahar #1, #2</div>
+      <p>How many bugs affect this sport? Shahar: "Manual work eventually causes bugs." Normalized per 1000 VUs, weighted by priority.</p>
+      <p style="margin-top:6px;font-size:.72rem;color:var(--ac)">Data: Jira sport keyword search (YTD 2026), priority-weighted</p>
+      <div class="scale">
+        <span class="sv s10">10</span><span>Zero bugs. Clean, stable pipeline.</span>
+        <span class="sv s7">8</span><span>Rare bugs, low severity. Quickly resolved.</span>
+        <span class="sv s5">5</span><span>Regular bugs, some P1s. Dev attention needed.</span>
+        <span class="sv s3">3</span><span>Frequent bugs or P0s. Stability concern.</span>
+        <span class="sv s1">1</span><span>Constant fires. Sport is a burden to maintain.</span>
+      </div>
+    </div>
+
+    <div class="qc" style="border-left:3px solid var(--o)">
+      <h4>4. Scale & Maturity (10%)</h4>
+      <div class="who">Volume signal</div>
+      <p>How many VUs does this sport produce? Higher volume = more battle-tested, more client value, more data to learn from.</p>
+      <p style="margin-top:6px;font-size:.72rem;color:var(--ac)">Data: Snowflake VU counts YTD 2026</p>
+      <div class="scale">
+        <span class="sv s10">10</span><span>10K+ VUs. Massive scale, well proven.</span>
+        <span class="sv s7">8</span><span>5K–10K VUs. Strong volume.</span>
+        <span class="sv s5">6</span><span>1K–5K VUs. Meaningful but moderate.</span>
+        <span class="sv s3">3</span><span>100–500 VUs. Limited testing.</span>
+        <span class="sv s1">1</span><span>&lt;100 VUs. Barely active.</span>
+      </div>
+    </div>
+
+    <div class="qc" style="border-left:3px solid var(--g2)">
+      <h4>5. Storylines (15%)</h4>
+      <div class="who">Ron #5 &middot; Yoav &middot; Shahar #4</div>
+      <p>How many distinct AVGen output video types are actively used? Each type represents a different storyline: Game Highlights, Condensed Game, Player Highlights, Top X Plays, Period Highlights, Team Highlights, etc.</p>
+      <p style="margin-top:6px;font-size:.72rem;color:var(--ac)">Data: MSSQL avgen.Rules × dbo.Systems — distinct OutputVideoType per ResolverType (active rules only)</p>
+      <div class="scale">
+        <span class="sv s10">10</span><span>18–20 types — Full suite: post-game, condensed, player, top X, period, team, compiled, filter, etc.</span>
+        <span class="sv s9">9</span><span>16–17 types — Near-complete, missing only niche storylines.</span>
+        <span class="sv s7">8</span><span>14–15 types — Strong variety. Covers all major use cases.</span>
+        <span class="sv s7">7</span><span>12–13 types — Good breadth. Some advanced types missing.</span>
+        <span class="sv s5">6</span><span>10–11 types — Decent coverage, gaps in compilation/period content.</span>
+        <span class="sv s5">5</span><span>8–9 types — Basic set + a few extras.</span>
+        <span class="sv s3">4</span><span>6–7 types — Limited to essentials.</span>
+        <span class="sv s3">3</span><span>4–5 types — Minimal.</span>
+        <span class="sv s1">2</span><span>2–3 types — Bare minimum (highlight + filter).</span>
+        <span class="sv s1">1</span><span>0–1 type — Practically no AVGen storylines.</span>
+      </div>
+    </div>
+
+    <div class="qc" style="border-left:3px solid var(--p)">
+      <h4>6. Vertical / Stories (10%)</h4>
+      <div class="who">Ron #5 &middot; Shahar #4</div>
+      <p>Does this sport have SDK Story Pages? Story Pages deliver an interactive vertical (9:16) experience — scores, events, video clips — similar to Instagram Stories but sport-specific. Measures how close vertical is to the horizontal video capability.</p>
+      <p style="margin-top:6px;font-size:.72rem;color:var(--ac)">Data: MSSQL Stories.StoryConfiguration × dbo.Systems — distinct configs per ResolverType</p>
+      <div class="scale">
+        <span class="sv s10">10</span><span>50+ story configs — massive adoption across many clients/leagues.</span>
+        <span class="sv s9">9</span><span>20–49 configs — strong adoption, multiple major clients using stories.</span>
+        <span class="sv s7">8</span><span>10–19 configs — good adoption, several clients with story pages.</span>
+        <span class="sv s7">7</span><span>5–9 configs — moderate adoption, a handful of clients.</span>
+        <span class="sv s5">5</span><span>3–4 configs — early adoption, limited client set.</span>
+        <span class="sv s3">3</span><span>1–2 configs — just starting, proof of concept.</span>
+        <span class="sv s1">1</span><span>0 configs — no story pages. Vertical gap vs horizontal.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>Qualitative signals not yet scored (future)</b>
+    <p><strong>Client Impact</strong> — # of clients, client tier, AM satisfaction (Shahar: "PGA is few clients but huge"). Requires Salesforce integration.<br>
+    <strong>Tagging Quality</strong> — E2E accuracy, ops correction rate (Ron #4). Kesem is building this in Snowflake.<br>
+    <strong>Investment / Maintenance Burden</strong> — Dev effort, ops hours, manual work (Shahar: "manual work causes bugs"). Requires sprint tracking.<br>
+    <strong>Dev Engagement</strong> — Shahar: "the interest/lack of interest of developers in the sport, and the level of investment required."</p>
+  </div>
+</section>
+</div>
+
+<!-- ========== DETAIL ========== -->
+<div id="p-detail" class="pn">
+<section>
+  <div class="h2">Content Quality — Full Breakdown (YTD 2026)</div>
+  <div class="cap">Source: Snowflake WSC_PROD.DWH_ANA.MISSING_CRITICAL_ALL_SPORTS_VU_LIST. Showing missing critical events rate per sport type.</div>
+  <table>
+    <thead><tr><th>#</th><th>Sport</th><th class="tc">Total VUs</th><th class="tc">VUs Missing</th><th class="tc">Rate</th><th class="tc">Score</th><th>Visual</th><th># Providers</th><th>Providers</th></tr></thead>
+    <tbody id="detailBody"></tbody>
+  </table>
+</section>
+
+<section style="padding-top:0">
+  <div class="h2">Storylines — AVGen Output Types per Sport</div>
+  <div class="cap">Source: MSSQL avgen.Rules × dbo.Systems. Distinct OutputVideoType values per ResolverType (active rules only).</div>
+  <table>
+    <thead><tr><th>#</th><th>Sport (Resolver)</th><th class="tc">Distinct Types</th><th class="tc">Score</th><th class="tc"># Leagues</th><th class="tc">Total Rules</th></tr></thead>
+    <tbody id="storylineBody"></tbody>
+  </table>
+</section>
+
+<section style="padding-top:0">
+  <div class="h2">Vertical / Stories — Story Page Configs per Sport</div>
+  <div class="cap">Source: MSSQL Stories.StoryConfiguration × dbo.Systems. 9 sports have at least 1 story config; the rest have zero.</div>
+  <table>
+    <thead><tr><th>#</th><th>Sport (Resolver)</th><th class="tc">Story Configs</th><th class="tc">Score</th><th>Notes</th></tr></thead>
+    <tbody id="storyBody"></tbody>
+  </table>
+</section>
+
+<section style="padding-top:0">
+  <div class="h2">Data Provider Tiers</div>
+  <div class="cap">Source: Snowflake MRR.MRR_INGESTIONMANAGERTODATAPROVIDER. Tier assignment based on provider reputation, data richness, and reliability.</div>
+  <div class="note">
+    <b>Tier Definitions</b>
+    <p><strong>Tier 1 (score 10):</strong> Opta, Sportradar (SR_*), ProTennis, OBS, NBAStatsFeeds, NHL, MLB, NFL, PGA — Industry leaders, official league feeds, rich parameters, fast delivery.<br>
+    <strong>Tier 2 (score 7):</strong> Statscore, Genius/FIBA, Euroleague, NRL, EHF, CEV, AFL, HockeyTech, IIHF — Solid specialized or league-specific providers.<br>
+    <strong>Tier 3 (score 4):</strong> DSG, Enetpulse, Kayo, FoxAustralia, Ellipse, SportzInteractive, AthStat, Kadamba, regional providers — Adequate coverage, limited parameters.<br>
+    <strong>Tier 4 (score 2):</strong> Manual tagging only, no automated data feed.</p>
+  </div>
+</section>
+</div>
+
+<!-- ========== SOURCES ========== -->
+<div id="p-src" class="pn">
+<section>
+  <div class="h2">Data Sources</div>
+  <div class="cap">Where the scoring data comes from. All 6 dimensions are auto-scored from production data.</div>
+  <div class="src-grid">
+    <div class="src"><div class="t">Snowflake: MISSING_CRITICAL_ALL_SPORTS_VU_LIST</div><div class="d">Content quality — missing critical events per sport (Kesem Cohen's analytics pipeline). Drives <b>Content Quality</b> score.</div></div>
+    <div class="src"><div class="t">Snowflake: MRR_INGESTIONMANAGERTODATAPROVIDER</div><div class="d">Data provider mapping per ingestion manager → sport. Drives <b>Data Provider</b> score.</div></div>
+    <div class="src"><div class="t">Jira: Bug search by sport keyword (YTD)</div><div class="d">Priority-weighted bugs per sport. Drives <b>Bug Density</b> score. Caveat: text-search undercounts vs system-tagged bugs.</div></div>
+    <div class="src"><div class="t">MSSQL: avgen.Rules × dbo.Systems</div><div class="d">Distinct OutputVideoType per ResolverType (active rules only). Drives <b>Storylines</b> score.</div></div>
+    <div class="src"><div class="t">MSSQL: Stories.StoryConfiguration × dbo.Systems</div><div class="d">Story page configs per sport's ResolverType. Drives <b>Vertical / Stories</b> score.</div></div>
+    <a href="https://10ay.online.tableau.com/#/site/wsctableau/views/AllSportsMissingCriticalEvents/AllSportsMissingCriticalEvents" target="_blank" class="src"><div class="t">Tableau: All Sports Missing Events ↗</div><div class="d">Interactive content quality dashboard (Kesem).</div></a>
+    <a href="https://10ay.online.tableau.com/#/site/wsctableau/views/OrderingIssuesallSports/Dashboard" target="_blank" class="src"><div class="t">Tableau: Ordering Issues ↗</div><div class="d">Wrong event order tracking across sports.</div></a>
+    <a href="https://wsc-sports.atlassian.net/jira/dashboards/12217" target="_blank" class="src"><div class="t">Jira: Open Incidents Dashboard ↗</div><div class="d">Content incidents trend: 42→37→27→21.</div></a>
+    <a href="https://wsc-sports.slack.com/archives/C08V564J667" target="_blank" class="src"><div class="t">#production_quality_analytics_efforts ↗</div><div class="d">Kesem, Guy Bandel, Adi Nissim — quality analytics project channel.</div></a>
+    <a href="https://wsc-sports.slack.com/archives/C07U3RD8Z6J" target="_blank" class="src"><div class="t">#content-quality-taskforce ↗</div><div class="d">Weekly summaries + daily bot reports (Soccer, Basketball, Rugby).</div></a>
+    <a href="https://wsc-sports.slack.com/archives/C0A8BPRFQ3S" target="_blank" class="src"><div class="t">#int-content-quality ↗</div><div class="d">Daily bot reports (Hockey, Cricket, Volleyball).</div></a>
+  </div>
+  <div class="note" style="margin-top:18px">
+    <b>Conversations that started this project</b>
+    <p>March 16 2026 — Manor Birman asked two Slack groups what "good sport" means.<br>
+    <strong>Group 1 (Product):</strong> Yoav Yahav, Ron Tahan, Dan Dragucki, Yuval Ben Nissan<br>
+    <strong>Group 2 (Dev):</strong> Shahar Cohen, Tal Kalderon, Daniel Hutzler<br>
+    The framework and weights are derived from their converging answers.</p>
+  </div>
+</section>
+</div>
+
+<script>
+const D=[
+  {n:"Soccer",vus:68488,miss:1589,rate:2.32,prov:"Opta, SR_Soccer, STS, Statscore, ESPN, Enetpulse, +6",bestT:1,multi:true,bugs:{p0:0,p1:4,p2:6},slRaw:15,stCfg:75},
+  {n:"Basketball",vus:48270,miss:1433,rate:2.97,prov:"NBAStatsFeeds, SR, Genius/FIBA, Euroleague, Statscore, +12",bestT:1,multi:true,bugs:{p0:0,p1:3,p2:4},slRaw:20,stCfg:17},
+  {n:"Tennis",vus:34725,miss:147,rate:0.42,prov:"ProTennis, SR_Tennis, WTA, InfrontBettor, SMT",bestT:1,multi:true,bugs:{p0:0,p1:1,p2:2},slRaw:13,stCfg:0},
+  {n:"Hockey",vus:22714,miss:1280,rate:5.64,prov:"NHL, Statscore, GeniusPush, HockeyTech, ESPN, +6",bestT:1,multi:true,bugs:{p0:0,p1:2,p2:3},slRaw:15,stCfg:10},
+  {n:"Volleyball",vus:5712,miss:80,rate:1.40,prov:"SPI, VNL, Statscore, CEV, LVF, VolleyStation, VLeague",bestT:2,multi:true,bugs:{p0:0,p1:0,p2:1},slRaw:14,stCfg:0},
+  {n:"Rugby",vus:2148,miss:341,rate:15.88,prov:"Opta, NRL, Ellipse, RIMS3",bestT:1,multi:true,bugs:{p0:0,p1:0,p2:0},slRaw:14,stCfg:4},
+  {n:"Baseball",vus:1860,miss:621,rate:33.39,prov:"MLB, ESPN, Statscore, DataStadium",bestT:1,multi:true,bugs:{p0:0,p1:1,p2:1},slRaw:12,stCfg:2},
+  {n:"Handball",vus:1814,miss:3,rate:0.17,prov:"EHF, Statscore, SynergySports, HandballStats",bestT:2,multi:true,bugs:{p0:0,p1:0,p2:0},slRaw:15,stCfg:0},
+  {n:"Curling",vus:1498,miss:195,rate:13.02,prov:"OBS_Curling",bestT:1,multi:false,bugs:{p0:0,p1:0,p2:0},slRaw:0,stCfg:0},
+  {n:"MMA / Boxing",vus:1243,miss:34,rate:2.74,prov:"FA_MMA, FA_Wrestling",bestT:3,multi:false,bugs:{p0:0,p1:0,p2:0},slRaw:13,stCfg:0},
+  {n:"Cricket",vus:1072,miss:1,rate:0.09,prov:"Opta, SR_Cricket, DSG, Kadamba, SportzInteractive",bestT:1,multi:true,bugs:{p0:1,p1:2,p2:0},slRaw:15,stCfg:30},
+  {n:"Football (US)",vus:951,miss:89,rate:9.36,prov:"NFL, SR, ESPN, Genius, NCAAFB",bestT:1,multi:true,bugs:{p0:0,p1:0,p2:0},slRaw:16,stCfg:5},
+  {n:"Ski (New)",vus:877,miss:9,rate:1.03,prov:"OBS_Ski, OBS_Biathlon, OBS_Nordic",bestT:1,multi:false,bugs:{p0:0,p1:0,p2:0},slRaw:11,stCfg:0},
+  {n:"Field Hockey / Lacrosse",vus:429,miss:252,rate:58.74,prov:"ChampionData",bestT:3,multi:false,bugs:{p0:0,p1:0,p2:0},slRaw:0,stCfg:0},
+  {n:"Golf",vus:292,miss:12,rate:4.11,prov:"PGA, LPGA, EuropeanTour, JLPGA, PGATIC_AU, SMT_Golf",bestT:1,multi:true,bugs:{p0:0,p1:0,p2:0},slRaw:13,stCfg:3},
+  {n:"Figure Skating",vus:168,miss:168,rate:100,prov:"OBS_FigureSkating",bestT:1,multi:false,bugs:{p0:0,p1:0,p2:0},slRaw:0,stCfg:0},
+  {n:"Racing (F1/Moto)",vus:122,miss:39,rate:31.97,prov:"DornaRacing, NASCAR, Indycar, Griiip, SR",bestT:1,multi:true,bugs:{p0:0,p1:0,p2:1},slRaw:13,stCfg:0},
+  {n:"Sliding",vus:122,miss:1,rate:0.82,prov:"OBS_Sliding",bestT:1,multi:false,bugs:{p0:0,p1:0,p2:0},slRaw:0,stCfg:0},
+  {n:"Ski (Legacy)",vus:114,miss:6,rate:5.26,prov:"FIS, RawMotion",bestT:2,multi:false,bugs:{p0:0,p1:0,p2:0},slRaw:11,stCfg:0},
+  {n:"Aussie Rules (AFL)",vus:3,miss:2,rate:66.67,prov:"AFL",bestT:2,multi:false,bugs:{p0:0,p1:0,p2:0},slRaw:14,stCfg:3}
+];
+
+// Storyline raw data from MSSQL for detail tab
+const SL_RAW=[
+  {r:"Basketball",types:20,leagues:188,rules:397723},
+  {r:"Football",types:16,leagues:31,rules:18594},
+  {r:"Soccer",types:15,leagues:497,rules:168624},
+  {r:"Cricket",types:15,leagues:140,rules:11480},
+  {r:"Handball",types:15,leagues:15,rules:7446},
+  {r:"Hockey",types:15,leagues:32,rules:27365},
+  {r:"AussieRules",types:14,leagues:11,rules:5049},
+  {r:"Volleyball",types:14,leagues:54,rules:12946},
+  {r:"Surfing",types:14,leagues:3,rules:3126},
+  {r:"Rugby",types:14,leagues:67,rules:10516},
+  {r:"Tennis",types:13,leagues:64,rules:14693},
+  {r:"Golf",types:13,leagues:17,rules:3653},
+  {r:"Racing",types:13,leagues:17,rules:2806},
+  {r:"MMA",types:13,leagues:20,rules:11448},
+  {r:"Baseball",types:12,leagues:24,rules:3812},
+  {r:"Ski",types:11,leagues:12,rules:767},
+  {r:"ShowJumping",types:10,leagues:3,rules:579},
+  {r:"HorseRacing",types:7,leagues:3,rules:449},
+  {r:"RugbyNRL",types:6,leagues:3,rules:175},
+  {r:"Poker",types:6,leagues:1,rules:155},
+  {r:"Skateboarding",types:6,leagues:3,rules:107},
+  {r:"BadmintonTableTennis",types:3,leagues:3,rules:27},
+  {r:"GolfTeam",types:1,leagues:1,rules:1}
+];
+
+const ST_RAW=[
+  {r:"Soccer",cfgs:75,note:"DAZN, LFP, Viaplay, EA Sports, Globo, FZSports, many more"},
+  {r:"Cricket",cfgs:30,note:"ICC, IPL clients, strong SDK adoption"},
+  {r:"Basketball",cfgs:17,note:"NBA, NCAA March Madness, B.League, DSS"},
+  {r:"Hockey",cfgs:10,note:"NHL (stories.nhl.com), Sportsnet, DSS"},
+  {r:"Football",cfgs:5,note:"NFL, CBS Sports, FanDuel"},
+  {r:"Rugby",cfgs:4,note:"NRL, Fox Australia"},
+  {r:"Golf",cfgs:3,note:"PGA Tour"},
+  {r:"AussieRules",cfgs:3,note:"AFL (early adoption)"},
+  {r:"Baseball",cfgs:2,note:"MLB (limited adoption so far)"}
+];
+
+const W={cq:.30,dp:.20,bg:.15,sc:.10,sl:.15,st:.10};
+
+function cqS(r){if(r===null)return 0;if(r<=.2)return 10;if(r<=.5)return 9;if(r<=1)return 8;if(r<=2)return 7;if(r<=4)return 6;if(r<=8)return 5;if(r<=15)return 3;if(r<=30)return 2;return 1;}
+function dpS(t,m){return t===1?(m?10:9):t===2?(m?8:7):t===3?4:2;}
+function bgS(s){const w=s.bugs.p0*4+s.bugs.p1*2+s.bugs.p2;if(s.vus===0)return 0;if(w===0)return 10;const r=w/(s.vus/1000);if(r<1)return 9;if(r<3)return 7;if(r<5)return 5;if(r<10)return 3;return 1;}
+function scS(v){if(v>=10000)return 10;if(v>=5000)return 8;if(v>=1000)return 6;if(v>=500)return 5;if(v>=100)return 3;if(v>0)return 1;return 0;}
+function slS(types){if(types>=18)return 10;if(types>=16)return 9;if(types>=14)return 8;if(types>=12)return 7;if(types>=10)return 6;if(types>=8)return 5;if(types>=6)return 4;if(types>=4)return 3;if(types>=2)return 2;return types>0?1:0;}
+function stS(cfgs){if(cfgs>=50)return 10;if(cfgs>=20)return 9;if(cfgs>=10)return 8;if(cfgs>=5)return 7;if(cfgs>=3)return 5;if(cfgs>=1)return 3;return 1;}
+function pc(v){if(v>=9)return's10';if(v>=7)return's7';if(v>=5)return's5';if(v>=3)return's3';if(v>=1)return's1';return's0';}
+
+function comp(s){
+  const vals={cq:cqS(s.rate),dp:dpS(s.bestT,s.multi),bg:bgS(s),sc:scS(s.vus),sl:slS(s.slRaw),st:stS(s.stCfg)};
+  let num=0,den=0;
+  for(const k in W){if(vals[k]>0){num+=vals[k]*W[k];den+=W[k];}}
+  return{...vals,total:den>0?(num/den).toFixed(1):'–'};
+}
+
+function render(){
+  const rows=D.map((s,i)=>{
+    const c=comp(s);
+    return{s,c,i};
+  }).sort((a,b)=>{
+    if(a.c.total==='–')return 1;if(b.c.total==='–')return-1;
+    return parseFloat(b.c.total)-parseFloat(a.c.total);
+  });
+
+  const mb=document.getElementById('mainBody');
+  mb.innerHTML=rows.map((r,rank)=>{
+    const s=r.s,c=r.c;
+    const cc=c.total==='–'?'cn':parseFloat(c.total)>=7.5?'cg':parseFloat(c.total)>=5?'cy':'cr';
+    const barW=Math.min(120,Math.max(3,s.rate*2));
+    const barC=c.cq>=8?'var(--g)':c.cq>=5?'var(--y)':'var(--r)';
+    return`<tr>
+      <td class="tc" style="color:var(--dm)">${rank+1}</td>
+      <td class="sn">${s.n}</td>
+      <td class="tc"><span class="pill ${pc(c.cq)}">${c.cq||'–'}</span></td>
+      <td class="tc"><span class="pill ${pc(c.dp)}">${c.dp||'–'}</span></td>
+      <td class="tc"><span class="pill ${pc(c.bg)}">${c.bg||'–'}</span></td>
+      <td class="tc"><span class="pill ${pc(c.sc)}">${c.sc||'–'}</span></td>
+      <td class="tc"><span class="pill ${pc(c.sl)}">${c.sl||'–'}</span></td>
+      <td class="tc"><span class="pill ${pc(c.st)}">${c.st||'–'}</span></td>
+      <td class="tc"><span class="${cc}">${c.total}</span></td>
+      <td><div style="display:flex;align-items:center;gap:4px"><div class="bar" style="width:${barW}px;background:${barC}"></div><span style="font-size:.72rem;color:var(--dm)">${s.rate}%</span></div></td>
+      <td class="prov" title="${s.prov}">${s.prov}</td>
+    </tr>`;
+  }).join('');
+
+  // Detail tab — Content Quality
+  const db=document.getElementById('detailBody');
+  const sorted=[...D].sort((a,b)=>a.rate-b.rate);
+  db.innerHTML=sorted.map((s,i)=>{
+    const sc=cqS(s.rate);
+    const barW=Math.min(200,Math.max(3,s.rate*1.5));
+    const barC=sc>=8?'var(--g)':sc>=5?'var(--y)':'var(--r)';
+    return`<tr>
+      <td class="tc" style="color:var(--dm)">${i+1}</td>
+      <td class="sn">${s.n}</td>
+      <td class="tc">${s.vus.toLocaleString()}</td>
+      <td class="tc">${s.miss.toLocaleString()}</td>
+      <td class="tc">${s.rate}%</td>
+      <td class="tc"><span class="pill ${pc(sc)}">${sc}</span></td>
+      <td><div style="display:flex;align-items:center;gap:4px"><div class="bar" style="width:${barW}px;background:${barC}"></div><span style="font-size:.72rem;color:var(--dm)">${s.rate}%</span></div></td>
+      <td class="tc">${s.prov.split(',').length}</td>
+      <td class="prov" title="${s.prov}">${s.prov}</td>
+    </tr>`;
+  }).join('');
+
+  // Detail tab — Storylines
+  const slb=document.getElementById('storylineBody');
+  slb.innerHTML=SL_RAW.map((s,i)=>{
+    const sc=slS(s.types);
+    return`<tr>
+      <td class="tc" style="color:var(--dm)">${i+1}</td>
+      <td class="sn">${s.r}</td>
+      <td class="tc"><span class="pill ${pc(sc)}">${s.types}</span></td>
+      <td class="tc"><span class="pill ${pc(sc)}">${sc}</span></td>
+      <td class="tc">${s.leagues}</td>
+      <td class="tc">${s.rules.toLocaleString()}</td>
+    </tr>`;
+  }).join('');
+
+  // Detail tab — Stories
+  const stb=document.getElementById('storyBody');
+  const allSports=[...ST_RAW];
+  // Add sports with 0 configs
+  const coveredSports=new Set(ST_RAW.map(s=>s.r));
+  ['Tennis','Volleyball','Handball','MMA','Ski','Racing','Surfing','ShowJumping','HorseRacing','Poker','Skateboarding','BadmintonTableTennis'].forEach(r=>{
+    if(!coveredSports.has(r))allSports.push({r,cfgs:0,note:'No story configuration'});
+  });
+  allSports.sort((a,b)=>b.cfgs-a.cfgs);
+  stb.innerHTML=allSports.map((s,i)=>{
+    const sc=stS(s.cfgs);
+    return`<tr>
+      <td class="tc" style="color:var(--dm)">${i+1}</td>
+      <td class="sn">${s.r}</td>
+      <td class="tc"><span class="pill ${pc(sc)}">${s.cfgs}</span></td>
+      <td class="tc"><span class="pill ${pc(sc)}">${sc}</span></td>
+      <td style="font-size:.72rem;color:var(--dm)">${s.note}</td>
+    </tr>`;
+  }).join('');
+}
+
+// Tab switching
+document.querySelectorAll('.tb').forEach(t=>{
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.pn').forEach(x=>x.classList.remove('on'));
+    this.classList.add('on');
+    document.getElementById('p-'+this.dataset.t).classList.add('on');
+  });
+});
+
+// Tooltip content
+const TIPS={
+  cq:{title:'Content Quality (30%)',html:`Measures the % of Video Users (VUs) with <b>missing critical events</b> — goals, points, wickets, etc. that should appear in auto-generated highlights but don't.<br><br><b>Source:</b> Snowflake <code>MISSING_CRITICAL_ALL_SPORTS_VU_LIST</code> (Kesem Cohen). YTD 2026.<br><br><b>Scoring:</b> ≤0.2%→10 | ≤0.5%→9 | ≤1%→8 | ≤2%→7 | ≤4%→6 | ≤8%→5 | ≤15%→3 | ≤30%→2 | >30%→1<div class="tip-ex"><b>Examples:</b><br>• Cricket (0.09%) → 10 — nearly perfect<br>• Soccer (2.32%) → 6 — edge cases across 500+ leagues<br>• Rugby (15.88%) → 2 — data gaps from NRL/Ellipse</div><a class="tip-link" href="https://10ay.online.tableau.com/#/site/wsctableau/views/AllSportsMissingCriticalEvents/AllSportsMissingCriticalEvents" target="_blank">→ Tableau: Missing Critical Events</a>`},
+  dp:{title:'Data Provider (20%)',html:`Rates the quality and reliability of the sport's best data feed.<br><br><b>Source:</b> Snowflake <code>MRR_INGESTIONMANAGERTODATAPROVIDER</code> + industry knowledge.<br><br><b>Tiers:</b><br>T1 (10): Opta, Sportradar, ProTennis, NBAStatsFeeds, NHL, MLB, NFL, PGA, OBS<br>T2 (7–8): Statscore, Genius/FIBA, EHF, NRL, AFL, HockeyTech<br>T3 (4): DSG, Enetpulse, Kayo, regional providers<br>T4 (2): Manual tagging only<br><b>Multi-provider bonus:</b> +1 if sport has multiple providers.<div class="tip-ex">• Tennis → 10: ProTennis + Sportradar (two T1 sources)<br>• Handball → 8: EHF (T2) + alternatives<br>• MMA → 4: FA_MMA only (T3, single source)</div>`},
+  bg:{title:'Bug Density (15%)',html:`Weighted bug count from Jira, normalized per 1,000 VUs. Weights: P0=×4, P1=×2, P2=×1.<br><br><b>Source:</b> Jira text search by sport name (YTD 2026).<br><br><b>Scoring:</b> 0 bugs→10 | &lt;1/1K VUs→9 | &lt;3→7 | &lt;5→5 | &lt;10→3 | ≥10→1<div class="tip-ex">• Handball (0 bugs) → 10 — zero issues<br>• Tennis (4 weighted, 34K VUs) → 9 — 0.12/1K VUs<br>• Cricket (6 weighted, 1K VUs) → 5 — P0 drove score down</div><a class="tip-link" href="https://wsc-sports.atlassian.net/jira/dashboards/12217" target="_blank">→ Jira: Open Incidents Dashboard</a>`},
+  sc:{title:'Scale & Maturity (10%)',html:`Total YTD Video Users (VUs) generated for this sport. Higher volume = more battle-tested pipeline.<br><br><b>Source:</b> Snowflake <code>MISSING_CRITICAL_ALL_SPORTS_VU_LIST</code> VU count.<br><br><b>Scoring:</b> ≥10K→10 | ≥5K→8 | ≥1K→6 | ≥500→5 | ≥100→3 | &lt;100→1<div class="tip-ex">• Soccer (68K VUs) → 10<br>• Volleyball (5.7K VUs) → 8<br>• Golf (292) → 3<br>• AFL (3 VUs) → 1</div>`},
+  sl:{title:'Storylines (15%)',html:`How many <b>distinct AVGen output video types</b> are actively used. Each = a different storyline (Game Highlights, Condensed, Player Highlights, Top X, etc.).<br><br><b>Source:</b> MSSQL <code>avgen.Rules</code> × <code>dbo.Systems</code>. Distinct OutputVideoType per ResolverType (active rules only).<br><br><b>Scoring:</b> 18–20→10 | 16–17→9 | 14–15→8 | 12–13→7 | 10–11→6 | 8–9→5 | 6–7→4 | 4–5→3 | 2–3→2 | 1→1<div class="tip-ex">• Basketball (20 types) → 10 — full suite<br>• Cricket (15 types) → 8 — strong variety<br>• BadmintonTableTennis (3 types) → 2</div><span class="tip-link">77 total HighlightTypes in platform. Max used by one sport: 20.</span>`},
+  st:{title:'Stories / Vertical (10%)',html:`Does this sport have <b>SDK Story Page configurations</b>? Story Pages deliver a vertical 9:16 interactive experience (scores, events, clips) — like Instagram Stories but sport-specific.<br><br><b>Source:</b> MSSQL <code>Stories.StoryConfiguration</code> × <code>dbo.Systems</code>.<br><br><b>Scoring (by config count):</b> 50+→10 | 20–49→9 | 10–19→8 | 5–9→7 | 3–4→5 | 1–2→3 | 0→1<div class="tip-ex">• Soccer (75 configs) → 10 — DAZN, LFP, Viaplay, many more<br>• Cricket (30 configs) → 9 — ICC, IPL<br>• Tennis (0 configs, 35K VUs) → 1 — zero story pages despite huge scale</div><span class="tip-link">9 sports have ≥1 story config. 15 sports have zero.</span>`},
+  comp:{title:'Composite Score',html:`Weighted average of all 6 dimensions:<br><br><b>Content Quality</b> 30% + <b>Data Provider</b> 20% + <b>Bug Density</b> 15% + <b>Storylines</b> 15% + <b>Scale</b> 10% + <b>Stories</b> 10%<br><br>If a dimension has no data (score = 0), it's excluded from the denominator so it doesn't penalise new sports unfairly.<br><br><b>Color guide:</b><br>🟢 ≥7.5 — Healthy<br>🟡 5–7.4 — Needs attention<br>🔴 &lt;5 — At risk`},
+  miss:{title:'Missing % (raw)',html:`The raw <b>% of VUs where at least one critical event is missing</b> from the auto-generated highlight — goals, points, wickets, etc. that should be there but aren't.<br><br>This drives the <b>Content Quality</b> score. Shown here so you can see the actual rate, not just the score.<br><br><b>Source:</b> Snowflake <code>MISSING_CRITICAL_ALL_SPORTS_VU_LIST</code>. YTD 2026.<div class="tip-ex">• 0.09% (Cricket) → nearly perfect<br>• 2.32% (Soccer) → 1 in 43 VUs has a missing event<br>• 33.39% (Baseball) → 1 in 3 VUs is broken</div>`}
+};
+
+// Tooltip engine
+const box=document.getElementById('tooltip-box');
+let activeBtn=null;
+
+function showTip(btn){
+  const key=btn.dataset.tip;
+  if(!TIPS[key])return;
+  const t=TIPS[key];
+  box.innerHTML=`<span class="tip-title">${t.title}</span>${t.html}`;
+  box.classList.add('visible');
+  positionTip(btn);
+  activeBtn=btn;
+}
+
+function positionTip(btn){
+  const r=btn.getBoundingClientRect();
+  const bw=box.offsetWidth||340;
+  const bh=box.offsetHeight||200;
+  const margin=12;
+  // Try above first
+  let top=r.top-bh-margin;
+  let left=r.left+r.width/2-bw/2;
+  // If above clips, go below
+  if(top<8){top=r.bottom+margin;box.style.setProperty('--arr','top');box.style.cssText+=';';}
+  // Clamp horizontal
+  left=Math.max(8,Math.min(left,window.innerWidth-bw-8));
+  box.style.top=top+'px';
+  box.style.left=left+'px';
+  // Arrow direction
+  box.style.setProperty('--arrow-top',top<r.top?'auto':'-14px');
+  box.style.setProperty('--arrow-bottom',top<r.top?'-14px':'auto');
+}
+
+document.querySelectorAll('.info-btn').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    if(activeBtn===this&&box.classList.contains('visible')){
+      box.classList.remove('visible');activeBtn=null;return;
+    }
+    showTip(this);
+  });
+  btn.addEventListener('mouseenter',function(){showTip(this);});
+  btn.addEventListener('mouseleave',function(){if(activeBtn!==this){box.classList.remove('visible');activeBtn=null;}});
+});
+
+document.addEventListener('click',function(){box.classList.remove('visible');activeBtn=null;});
+window.addEventListener('scroll',function(){if(activeBtn)positionTip(activeBtn);},true);
+
+render();
+</script>
+</body>
+</html>
